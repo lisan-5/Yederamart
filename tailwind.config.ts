@@ -59,6 +59,12 @@ export default {
         cream: "hsl(var(--cream))",
         "warm-white": "hsl(var(--warm-white))",
         obsidian: "hsl(var(--obsidian))",
+        "ethiopian-green": "hsl(var(--ethiopian-green))",
+        "ethiopian-gold": "hsl(var(--ethiopian-gold))",
+        "ethiopian-red": "hsl(var(--ethiopian-red))",
+        "coffee-dark": "hsl(var(--coffee-dark))",
+        "coffee-medium": "hsl(var(--coffee-medium))",
+        "teff-brown": "hsl(var(--teff-brown))",
       },
       fontFamily: {
         serif: ["var(--font-serif)", "Georgia", "serif"],
