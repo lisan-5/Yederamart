@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Coffee } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
@@ -26,30 +26,39 @@ const Navbar = () => {
       <motion.nav 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
           isScrolled 
-            ? 'bg-background/90 backdrop-blur-xl border-b border-border/50' 
+            ? 'bg-background/95 backdrop-blur-xl border-b border-border/50' 
             : 'bg-transparent'
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, delay: 0.5 }}
       >
+        {/* Tricolor bar at top when scrolled */}
+        <div className={`absolute top-0 left-0 right-0 tricolor-bar transition-opacity duration-500 ${isScrolled ? 'opacity-100' : 'opacity-0'}`} />
+        
         <div className="container mx-auto px-6">
           <div className={`flex items-center justify-between transition-all duration-500 ${isScrolled ? 'py-4' : 'py-6'}`}>
-            {/* Logo */}
+            {/* Logo with Ethiopian styling */}
             <motion.a 
               href="#" 
-              className="relative group"
+              className="relative group flex items-center gap-2"
               whileHover={{ scale: 1.02 }}
             >
-              <span className="font-serif text-2xl text-foreground group-hover:text-primary transition-colors duration-300">
-                Yedera <span className="text-primary">Mart</span>
-              </span>
-              <motion.span 
-                className="absolute -bottom-1 left-0 w-full h-px bg-primary origin-left"
-                initial={{ scaleX: 0 }}
-                whileHover={{ scaleX: 1 }}
-                transition={{ duration: 0.3 }}
-              />
+              <motion.div 
+                className="w-8 h-8 bg-gradient-to-br from-ethiopian-green via-primary to-ethiopian-red rounded-full flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity"
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.6 }}
+              >
+                <Coffee className="w-4 h-4 text-primary-foreground" />
+              </motion.div>
+              <div>
+                <span className="font-serif text-xl text-foreground group-hover:text-primary transition-colors duration-300 block leading-none">
+                  Yedera
+                </span>
+                <span className="text-[10px] uppercase tracking-[0.2em] text-primary leading-none">
+                  Mart
+                </span>
+              </div>
             </motion.a>
 
             {/* Desktop Nav */}
@@ -71,8 +80,10 @@ const Navbar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 1 }}
               >
-                <Button variant="gold" size="sm" asChild>
-                  <a href="tel:+14705453118">Call Us</a>
+                <Button variant="hero" size="sm" asChild>
+                  <a href="tel:+14705453118">
+                    <span>Call Us</span>
+                  </a>
                 </Button>
               </motion.div>
             </div>
@@ -112,7 +123,7 @@ const Navbar = () => {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu with Ethiopian styling */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div 
@@ -121,14 +132,18 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            {/* Backdrop */}
+            {/* Backdrop with Ethiopian pattern */}
             <motion.div 
-              className="absolute inset-0 bg-background/95 backdrop-blur-xl"
+              className="absolute inset-0 bg-background/98 backdrop-blur-xl ethiopian-pattern"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMobileMenuOpen(false)}
             />
+            
+            {/* Tricolor accents */}
+            <div className="absolute top-0 left-0 right-0 tricolor-bar" />
+            <div className="absolute bottom-0 left-0 right-0 tricolor-bar" />
             
             {/* Menu Content */}
             <motion.div 
@@ -137,12 +152,24 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
+              {/* Decorative coffee icon */}
+              <motion.div 
+                className="mb-12"
+                initial={{ scale: 0, rotate: -180 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="w-16 h-16 bg-gradient-to-br from-ethiopian-green via-primary to-ethiopian-red rounded-full flex items-center justify-center">
+                  <Coffee className="w-8 h-8 text-primary-foreground" />
+                </div>
+              </motion.div>
+              
               <div className="flex flex-col items-center gap-8">
                 {navLinks.map((link, index) => (
                   <motion.a
                     key={link.label}
                     href={link.href}
-                    className="font-serif text-4xl text-foreground hover:text-primary transition-colors"
+                    className="font-serif text-4xl text-foreground hover:text-primary transition-colors relative group"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
@@ -150,6 +177,7 @@ const Navbar = () => {
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {link.label}
+                    <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-ethiopian-green via-primary to-ethiopian-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
                   </motion.a>
                 ))}
                 <motion.div
@@ -157,18 +185,29 @@ const Navbar = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3, delay: 0.3 }}
+                  className="mt-4"
                 >
                   <Button variant="hero" size="lg" asChild>
                     <a href="tel:+14705453118" onClick={() => setIsMobileMenuOpen(false)}>
-                      Call Us Now
+                      <span>Call Us Now</span>
                     </a>
                   </Button>
                 </motion.div>
               </div>
               
-              {/* Decorative elements */}
-              <div className="absolute top-20 left-10 w-20 h-20 border border-primary/10 rotate-45" />
-              <div className="absolute bottom-20 right-10 w-16 h-16 border border-primary/10 rotate-12" />
+              {/* Decorative elements with Ethiopian colors */}
+              <motion.div 
+                className="absolute top-24 left-8 w-16 h-16 border border-ethiopian-green/20 rotate-45"
+                animate={{ rotate: [45, 90, 45] }}
+                transition={{ duration: 10, repeat: Infinity }}
+              />
+              <motion.div 
+                className="absolute bottom-24 right-8 w-12 h-12 border border-ethiopian-red/20 rotate-12"
+                animate={{ rotate: [12, -12, 12] }}
+                transition={{ duration: 8, repeat: Infinity }}
+              />
+              <div className="absolute top-1/4 right-12 w-2 h-2 bg-primary/40 rounded-full" />
+              <div className="absolute bottom-1/3 left-12 w-3 h-3 bg-ethiopian-green/30 rotate-45" />
             </motion.div>
           </motion.div>
         )}
