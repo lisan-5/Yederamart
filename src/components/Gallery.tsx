@@ -2,11 +2,11 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
-import dishTomahawk from "@/assets/dish-tomahawk.jpg";
-import dishKitfo from "@/assets/dish-kitfo.jpg";
-import dishOysters from "@/assets/dish-oysters.jpg";
+import productSpices from "@/assets/product-spices.jpg";
+import productCoffee from "@/assets/product-coffee.jpg";
+import productTeaset from "@/assets/product-teaset.jpg";
 
-const images = [heroBg, dishTomahawk, dishKitfo, dishOysters];
+const images = [heroBg, productSpices, productCoffee, productTeaset];
 
 const Gallery = () => {
   const containerRef = useRef(null);
@@ -55,7 +55,7 @@ const Gallery = () => {
             >
               <motion.img
                 src={image}
-                alt={`Gallery image ${index + 1}`}
+                alt={`Yedera Mart gallery image ${index + 1}`}
                 className="w-full h-full object-cover"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
@@ -86,13 +86,13 @@ const Gallery = () => {
           transition={{ duration: 0.6, delay: 0.8 }}
         >
           <a 
-            href="https://www.yelp.com/biz/meski-restaurant-san-francisco"
+            href="https://www.yelp.com/biz/yedera-mart-stone-mountain"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 text-primary hover:text-gold-light transition-colors uppercase tracking-[0.2em] text-sm font-light group"
           >
             <span className="h-px w-8 bg-primary/50 group-hover:w-12 transition-all duration-300" />
-            View 400+ Photos
+            View 37+ Photos on Yelp
             <span className="h-px w-8 bg-primary/50 group-hover:w-12 transition-all duration-300" />
           </a>
         </motion.div>

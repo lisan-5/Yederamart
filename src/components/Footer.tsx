@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Instagram } from "lucide-react";
+import { Phone } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -26,14 +26,24 @@ const Footer = () => {
 
           {/* Logo */}
           <motion.h2 
-            className="font-serif text-5xl md:text-6xl text-foreground mb-4"
+            className="font-serif text-5xl md:text-6xl text-foreground mb-2"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Meski
+            Yedera
           </motion.h2>
+          
+          <motion.p 
+            className="font-serif text-2xl text-primary italic mb-4"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
+            Mart
+          </motion.p>
           
           {/* Tagline */}
           <motion.p 
@@ -43,10 +53,10 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Ethiopian Fusion • Cocktail Bar • Wine Bar
+            Ethiopian Grocery • Coffee & Tea • Cultural Goods
           </motion.p>
 
-          {/* Social */}
+          {/* Contact */}
           <motion.div 
             className="flex items-center gap-8 mb-10"
             initial={{ opacity: 0, y: 10 }}
@@ -55,18 +65,15 @@ const Footer = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <a 
-              href="https://www.instagram.com/meskisf" 
-              target="_blank" 
-              rel="noopener noreferrer"
+              href="tel:+14705453118"
               className="group flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
-              aria-label="Instagram"
             >
-              <Instagram className="w-5 h-5" />
-              <span className="text-xs uppercase tracking-widest">Instagram</span>
+              <Phone className="w-5 h-5" />
+              <span className="text-xs uppercase tracking-widest">(470) 545-3118</span>
             </a>
             <div className="w-1 h-1 bg-border rounded-full" />
             <a 
-              href="https://www.yelp.com/biz/meski-restaurant-san-francisco" 
+              href="https://www.yelp.com/biz/yedera-mart-stone-mountain" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors text-xs uppercase tracking-widest"
@@ -75,7 +82,7 @@ const Footer = () => {
             </a>
           </motion.div>
 
-          {/* Contact Info */}
+          {/* Address */}
           <motion.div 
             className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-sm text-muted-foreground mb-12"
             initial={{ opacity: 0 }}
@@ -83,16 +90,9 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <span className="font-light">1000 Larkin St, San Francisco, CA 94109</span>
+            <span className="font-light">1525 E Park Place Blvd, Stone Mountain, GA 30087</span>
             <span className="hidden md:inline text-border">|</span>
-            <a 
-              href="https://meskisf.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="hover:text-primary transition-colors font-light"
-            >
-              meskisf.com
-            </a>
+            <span className="font-light">Open Daily 10:30 AM - 8:00 PM</span>
           </motion.div>
 
           {/* Copyright */}
@@ -103,7 +103,7 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            © {currentYear} Meski Restaurant. All rights reserved.
+            © {currentYear} Yedera Mart. All rights reserved.
           </motion.p>
         </div>
       </div>
