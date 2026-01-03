@@ -6,7 +6,7 @@ const About = () => {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
-  const atmosphereTags = ['Intimate', 'Classy', 'Upscale', 'Dressy', 'Good for Groups'];
+  const atmosphereTags = ['Family-Owned', 'Authentic', 'Welcoming', 'Cultural', 'Community'];
 
   return (
     <section id="about" className="relative py-32 bg-card overflow-hidden ethiopian-pattern">
@@ -27,7 +27,7 @@ const About = () => {
             className="mb-6"
           >
             <span className="text-primary uppercase tracking-[0.4em] text-xs font-light">
-              Our Story
+              About Us
             </span>
           </motion.div>
 
@@ -38,9 +38,9 @@ const About = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            A Culinary
+            A Taste of
             <br />
-            <span className="italic text-primary">Journey</span>
+            <span className="italic text-primary">Ethiopia</span>
           </motion.h2>
 
           {/* Decorative line */}
@@ -77,10 +77,9 @@ const About = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Meski Restaurant brings the <span className="text-foreground">bold, aromatic flavors of Ethiopia</span> to San Francisco's 
-            Lower Nob Hill, reimagined through the lens of contemporary fine dining. Our kitchen 
-            honors traditional techniques—<span className="text-primary italic">nitir kibbeh, berbere, injera</span>—while embracing global 
-            influences to create dishes that surprise and delight.
+            Welcome to Yedera Mart, your <span className="text-foreground">one-stop destination for authentic Ethiopian flavors</span> and 
+            ingredients. We source directly from Ethiopia, ensuring the <span className="text-primary italic">highest quality</span> spices, 
+            coffee, teff flour, and traditional goods for our community.
           </motion.p>
 
           <motion.p 
@@ -89,10 +88,10 @@ const About = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            Step into our <span className="text-foreground">intimate, candlelit space</span> where African art adorns the walls and 
-            every plate tells a story. From our signature Tomahawk Bistec to the delicate 
-            Kitfo Tartare, experience the warmth of Ethiopian hospitality paired with an 
-            exceptional cocktail and wine program.
+            Step into our <span className="text-foreground">family-owned market</span> where you&apos;ll find fresh 
+            <span className="text-primary italic"> sambusas, injera, specialty drinks</span>, and a warm coffee counter 
+            serving traditional Ethiopian brews. Our knowledgeable staff offers personalized service and 
+            cultural insight with every visit.
           </motion.p>
 
           {/* Atmosphere Tags */}

@@ -1,44 +1,48 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import dishOxtail from "@/assets/dish-oxtail.jpg";
-import dishKitfo from "@/assets/dish-kitfo.jpg";
-import dishTomahawk from "@/assets/dish-tomahawk.jpg";
-import dishOysters from "@/assets/dish-oysters.jpg";
-import dishYuca from "@/assets/dish-yuca.jpg";
+import productCoffee from "@/assets/product-coffee.jpg";
+import productSpices from "@/assets/product-spices.jpg";
+import productInjera from "@/assets/product-injera.jpg";
+import productSambusa from "@/assets/product-sambusa.jpg";
+import productTeaset from "@/assets/product-teaset.jpg";
 
-const dishes = [
+const products = [
   {
-    name: "Oxtail Pasta",
-    description: "Slow-braised oxtail, house-made pasta, rich demi-glace",
-    image: dishOxtail,
-    category: "Signature",
+    name: "Ethiopian Coffee",
+    description: "Fresh roasted coffee beans, traditional jebena pots, and brewing supplies",
+    image: productCoffee,
+    category: "Coffee Counter",
   },
   {
-    name: "Kitfo Tartare",
-    description: "Raw beef tenderloin, nitir kibbeh oil, cured egg yolk, injera chips",
-    price: "$19",
-    image: dishKitfo,
-    category: "Raw Bar",
+    name: "Berbere & Spices",
+    description: "Authentic spice blends, mitmita, turmeric, and aromatic seasonings",
+    image: productSpices,
+    category: "Spices",
   },
   {
-    name: "Meski Tomahawk",
-    description: "40oz bone-in ribeye, cashew salsa macha, awaze butter",
-    price: "$165",
-    image: dishTomahawk,
-    category: "Signature",
+    name: "Ethiopian Spice Collection",
+    description: "Complete selection of traditional spices sourced directly from Ethiopia",
+    image: productSpices,
+    category: "Featured",
     featured: true,
   },
   {
-    name: "Charred Oysters",
-    description: "Marin Miyagi oysters with house butter and herbs",
-    image: dishOysters,
-    category: "Raw Bar",
+    name: "Fresh Injera",
+    description: "Traditional teff flatbread made fresh, along with teff flour for home cooking",
+    image: productInjera,
+    category: "Fresh Food",
   },
   {
-    name: "Duck Fat Yuca",
-    description: "Crispy yuca fries cooked in rich duck fat",
-    image: dishYuca,
-    category: "Sides",
+    name: "Fresh Sambusas",
+    description: "Handmade savory pastries filled with seasoned meat or vegetables",
+    image: productSambusa,
+    category: "Fresh Food",
+  },
+  {
+    name: "Tea Sets & Handicrafts",
+    description: "Beautiful traditional tea sets, incense holders, and Ethiopian jewelry",
+    image: productTeaset,
+    category: "Gifts",
   },
 ];
 
@@ -48,7 +52,7 @@ const Menu = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section id="menu" className="relative py-32 bg-background overflow-hidden">
+    <section id="products" className="relative py-32 bg-background overflow-hidden">
       {/* Background texture */}
       <div className="absolute inset-0 grain" />
       
@@ -65,7 +69,7 @@ const Menu = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            The Menu
+            What We Offer
           </motion.span>
           
           <motion.h2 
@@ -74,7 +78,7 @@ const Menu = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Signature <span className="italic text-primary">Dishes</span>
+            Our <span className="italic text-primary">Products</span>
           </motion.h2>
           
           <motion.p 
@@ -83,12 +87,12 @@ const Menu = () => {
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Each dish is a celebration of Ethiopian heritage, crafted with locally-sourced 
-            ingredients and bold, aromatic spices.
+            From authentic spices to fresh foods and cultural treasures, 
+            discover the finest Ethiopian products sourced directly from home.
           </motion.p>
         </div>
 
-        {/* Featured Dish - Large */}
+        {/* Featured Product - Large */}
         <motion.div 
           className="mb-12"
           initial={{ opacity: 0, y: 60 }}
@@ -102,8 +106,8 @@ const Menu = () => {
           >
             <div className="aspect-[21/9] relative overflow-hidden">
               <motion.img 
-                src={dishTomahawk} 
-                alt="Meski Tomahawk"
+                src={productSpices} 
+                alt="Ethiopian Spice Collection"
                 className="w-full h-full object-cover"
                 animate={{ scale: hoveredIndex === -1 ? 1.05 : 1 }}
                 transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
@@ -125,25 +129,25 @@ const Menu = () => {
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.8 }}
                 >
-                  Chef's Signature
+                  Featured Collection
                 </motion.span>
                 <h3 className="font-serif text-4xl md:text-5xl text-foreground mb-3">
-                  Meski Tomahawk Bistec
+                  Authentic Ethiopian Spices
                 </h3>
                 <p className="text-muted-foreground text-lg mb-4 font-light">
-                  40oz bone-in ribeye with cashew salsa macha, pickled shallot, and awaze butter
+                  Berbere, mitmita, korerima, and more — sourced directly from Ethiopia for the most authentic flavors
                 </p>
-                <span className="text-primary font-serif text-3xl">$165</span>
+                <span className="text-primary font-serif text-xl">Explore Our Selection</span>
               </div>
             </div>
           </div>
         </motion.div>
 
-        {/* Dish Grid */}
+        {/* Product Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {dishes.filter(d => !d.featured).map((dish, index) => (
+          {products.filter(d => !d.featured).map((product, index) => (
             <motion.div 
-              key={dish.name}
+              key={product.name}
               className="group relative cursor-pointer"
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -153,8 +157,8 @@ const Menu = () => {
             >
               <div className="relative aspect-[4/5] overflow-hidden bg-card">
                 <motion.img 
-                  src={dish.image} 
-                  alt={dish.name}
+                  src={product.image} 
+                  alt={product.name}
                   className="w-full h-full object-cover"
                   animate={{ scale: hoveredIndex === index ? 1.1 : 1 }}
                   transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
@@ -169,30 +173,23 @@ const Menu = () => {
                   transition={{ duration: 0.3 }}
                 >
                   <span className="text-[10px] uppercase tracking-[0.2em] text-primary bg-background/80 px-3 py-1 backdrop-blur-sm">
-                    {dish.category}
+                    {product.category}
                   </span>
                 </motion.div>
                 
                 {/* Content */}
                 <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <div className="flex items-end justify-between">
-                    <div>
-                      <h3 className="font-serif text-xl text-foreground mb-1 group-hover:text-primary transition-colors duration-300">
-                        {dish.name}
-                      </h3>
-                      <motion.p 
-                        className="text-muted-foreground text-sm font-light line-clamp-2"
-                        initial={{ opacity: 0.7 }}
-                        animate={{ opacity: hoveredIndex === index ? 1 : 0.7 }}
-                      >
-                        {dish.description}
-                      </motion.p>
-                    </div>
-                    {dish.price && (
-                      <span className="text-primary font-serif text-lg ml-4 shrink-0">
-                        {dish.price}
-                      </span>
-                    )}
+                  <div>
+                    <h3 className="font-serif text-xl text-foreground mb-1 group-hover:text-primary transition-colors duration-300">
+                      {product.name}
+                    </h3>
+                    <motion.p 
+                      className="text-muted-foreground text-sm font-light line-clamp-2"
+                      initial={{ opacity: 0.7 }}
+                      animate={{ opacity: hoveredIndex === index ? 1 : 0.7 }}
+                    >
+                      {product.description}
+                    </motion.p>
                   </div>
                 </div>
                 
@@ -208,7 +205,7 @@ const Menu = () => {
           ))}
         </div>
 
-        {/* View Full Menu CTA */}
+        {/* View More CTA */}
         <motion.div 
           className="text-center mt-16"
           initial={{ opacity: 0 }}
@@ -216,13 +213,11 @@ const Menu = () => {
           transition={{ duration: 0.6, delay: 1.2 }}
         >
           <a 
-            href="https://meskisf.com" 
-            target="_blank" 
-            rel="noopener noreferrer"
+            href="#location" 
             className="group inline-flex items-center gap-3 text-primary hover:text-gold-light transition-colors uppercase tracking-[0.2em] text-sm font-light"
           >
             <span className="h-px w-8 bg-primary/50 group-hover:w-12 transition-all duration-300" />
-            View Full Menu
+            Visit Us Today
             <span className="h-px w-8 bg-primary/50 group-hover:w-12 transition-all duration-300" />
           </a>
         </motion.div>

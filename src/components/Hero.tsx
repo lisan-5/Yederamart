@@ -63,17 +63,17 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Ethiopian Fusion • Cocktail Bar • Wine Bar
+              Ethiopian Grocery • Coffee & Tea • Cultural Goods
             </motion.p>
 
             {/* Logo/Name with letter animation */}
             <motion.h1 
-              className="font-serif text-7xl md:text-[10rem] lg:text-[14rem] font-light text-foreground mb-4 leading-none"
+              className="font-serif text-7xl md:text-[10rem] lg:text-[12rem] font-light text-foreground mb-4 leading-none"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.6 }}
             >
-              {"Meski".split("").map((letter, i) => (
+              {"Yedera".split("").map((letter, i) => (
                 <motion.span
                   key={i}
                   className="inline-block"
@@ -90,6 +90,16 @@ const Hero = () => {
               ))}
             </motion.h1>
 
+            {/* Mart subtitle */}
+            <motion.p 
+              className="font-serif text-3xl md:text-5xl text-primary/80 italic mb-6 font-light"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 1.1 }}
+            >
+              Mart
+            </motion.p>
+
             {/* Subtitle */}
             <motion.p 
               className="font-serif text-lg md:text-2xl text-cream/70 italic mb-10 font-light"
@@ -97,7 +107,7 @@ const Hero = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 1.2 }}
             >
-              Where East African Tradition Meets Modern Elegance
+              Your Destination for Authentic Ethiopian Flavors
             </motion.p>
 
             {/* Rating */}
@@ -111,11 +121,11 @@ const Hero = () => {
                 {[...Array(5)].map((_, i) => (
                   <Star 
                     key={i} 
-                    className={`w-4 h-4 ${i < 4 ? 'fill-primary text-primary' : 'fill-primary/30 text-primary/30'}`} 
+                    className={`w-4 h-4 ${i < 3 ? 'fill-primary text-primary' : 'fill-primary/30 text-primary/30'}`} 
                   />
                 ))}
               </div>
-              <span className="text-muted-foreground text-sm tracking-wide">4.3 • 129 Reviews</span>
+              <span className="text-muted-foreground text-sm tracking-wide">3.0 • Family Owned</span>
             </motion.div>
 
             {/* CTA Buttons */}
@@ -126,10 +136,10 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 1.6 }}
             >
               <Button variant="hero" size="xl" asChild>
-                <a href="#reservations">Reserve a Table</a>
+                <a href="#products">Explore Products</a>
               </Button>
               <Button variant="elegant" size="xl" asChild>
-                <a href="#menu">Explore Menu</a>
+                <a href="#location">Visit Us</a>
               </Button>
             </motion.div>
 
@@ -142,12 +152,12 @@ const Hero = () => {
             >
               <div className="flex items-center gap-2 hover:text-primary transition-colors">
                 <MapPin className="w-3 h-3 text-primary" />
-                <span>Lower Nob Hill, SF</span>
+                <span>Stone Mountain, GA</span>
               </div>
               <div className="w-1 h-1 bg-primary/30 rounded-full" />
               <div className="flex items-center gap-2 hover:text-primary transition-colors">
                 <Clock className="w-3 h-3 text-primary" />
-                <span>Wed-Sun from 5PM</span>
+                <span>Open Daily 10:30AM - 8PM</span>
               </div>
             </motion.div>
           </div>

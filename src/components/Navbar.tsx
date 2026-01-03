@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 const navLinks = [
   { label: "About", href: "#about" },
-  { label: "Menu", href: "#menu" },
+  { label: "Products", href: "#products" },
   { label: "Location", href: "#location" },
 ];
 
@@ -42,7 +42,7 @@ const Navbar = () => {
               whileHover={{ scale: 1.02 }}
             >
               <span className="font-serif text-2xl text-foreground group-hover:text-primary transition-colors duration-300">
-                Meski
+                Yedera <span className="text-primary">Mart</span>
               </span>
               <motion.span 
                 className="absolute -bottom-1 left-0 w-full h-px bg-primary origin-left"
@@ -72,7 +72,7 @@ const Navbar = () => {
                 transition={{ duration: 0.5, delay: 1 }}
               >
                 <Button variant="gold" size="sm" asChild>
-                  <a href="#reservations">Reserve</a>
+                  <a href="tel:+14705453118">Call Us</a>
                 </Button>
               </motion.div>
             </div>
@@ -159,8 +159,8 @@ const Navbar = () => {
                   transition={{ duration: 0.3, delay: 0.3 }}
                 >
                   <Button variant="hero" size="lg" asChild>
-                    <a href="#reservations" onClick={() => setIsMobileMenuOpen(false)}>
-                      Reserve a Table
+                    <a href="tel:+14705453118" onClick={() => setIsMobileMenuOpen(false)}>
+                      Call Us Now
                     </a>
                   </Button>
                 </motion.div>

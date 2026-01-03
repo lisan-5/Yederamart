@@ -4,13 +4,13 @@ import { MapPin, Clock, ExternalLink, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const hours = [
-  { day: "Monday", hours: "Closed", closed: true },
-  { day: "Tuesday", hours: "Closed", closed: true },
-  { day: "Wednesday", hours: "5:00 PM - 11:00 PM", closed: false },
-  { day: "Thursday", hours: "5:00 PM - 11:00 PM", closed: false },
-  { day: "Friday", hours: "5:00 PM - 1:00 AM", closed: false },
-  { day: "Saturday", hours: "5:00 PM - 1:00 AM", closed: false },
-  { day: "Sunday", hours: "5:00 PM - 9:00 PM", closed: false },
+  { day: "Monday", hours: "10:30 AM - 8:00 PM", closed: false },
+  { day: "Tuesday", hours: "10:30 AM - 8:00 PM", closed: false },
+  { day: "Wednesday", hours: "10:30 AM - 8:00 PM", closed: false },
+  { day: "Thursday", hours: "10:30 AM - 8:00 PM", closed: false },
+  { day: "Friday", hours: "10:30 AM - 8:00 PM", closed: false },
+  { day: "Saturday", hours: "10:30 AM - 8:00 PM", closed: false },
+  { day: "Sunday", hours: "10:30 AM - 6:00 PM", closed: false },
 ];
 
 const Location = () => {
@@ -48,7 +48,7 @@ const Location = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Visit <span className="italic text-primary">Meski</span>
+            Visit <span className="italic text-primary">Yedera</span>
           </motion.h2>
         </div>
 
@@ -63,14 +63,14 @@ const Location = () => {
             <div className="relative aspect-square lg:aspect-[4/3] mb-8 group">
               <div className="absolute inset-0 bg-secondary overflow-hidden">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0977!2d-122.4197!3d37.7876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085808a1f8a71d1%3A0x1000!2s1000%20Larkin%20St%2C%20San%20Francisco%2C%20CA%2094109!5e0!3m2!1sen!2sus!4v1704000000000"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3315.1234567890123!2d-84.1234567!3d33.8087654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s1525%20E%20Park%20Place%20Blvd%2C%20Stone%20Mountain%2C%20GA%2030087!5e0!3m2!1sen!2sus!4v1704000000000"
                   width="100%"
                   height="100%"
                   style={{ border: 0, filter: 'grayscale(100%) invert(92%) contrast(85%) sepia(10%)' }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Meski Restaurant Location"
+                  title="Yedera Mart Location"
                 />
               </div>
               
@@ -96,12 +96,12 @@ const Location = () => {
                 <div>
                   <h3 className="font-serif text-2xl text-foreground mb-3">Location</h3>
                   <p className="text-muted-foreground font-light leading-relaxed">
-                    1000 Larkin Street<br />
-                    San Francisco, CA 94109<br />
-                    <span className="text-primary">Lower Nob Hill</span>
+                    1525 E Park Place Blvd<br />
+                    Stone Mountain, GA 30087<br />
+                    <span className="text-primary">Near Stone Mountain</span>
                   </p>
                   <a 
-                    href="https://maps.google.com/?q=1000+Larkin+St+San+Francisco+CA+94109"
+                    href="https://maps.google.com/?q=1525+E+Park+Place+Blvd+Stone+Mountain+GA+30087"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-primary hover:text-gold-light transition-colors mt-4 text-sm uppercase tracking-widest group"
@@ -114,7 +114,7 @@ const Location = () => {
             </div>
           </motion.div>
 
-          {/* Hours & Reservation */}
+          {/* Hours & Contact */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -158,9 +158,8 @@ const Location = () => {
               </div>
             </div>
 
-            {/* Reservation CTA */}
+            {/* Contact CTA */}
             <motion.div 
-              id="reservations"
               className="relative overflow-hidden"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -172,22 +171,22 @@ const Location = () => {
                 <div className="absolute bottom-4 right-4 w-8 h-8 border-r border-b border-primary/30" />
                 
                 <h3 className="font-serif text-3xl text-foreground mb-4">
-                  Reserve Your Table
+                  Come Visit Us
                 </h3>
                 <p className="text-muted-foreground font-light mb-8">
-                  Experience the warmth of Ethiopian hospitality
+                  Experience authentic Ethiopian hospitality and culture
                 </p>
                 
                 <Button variant="hero" size="xl" className="w-full sm:w-auto" asChild>
-                  <a href="https://meskisf.com" target="_blank" rel="noopener noreferrer">
-                    Make Reservation
+                  <a href="tel:+14705453118">
+                    Call Us Now
                   </a>
                 </Button>
                 
                 <div className="mt-6 flex items-center justify-center gap-2 text-muted-foreground text-sm">
                   <Phone className="w-4 h-4" />
-                  <a href="https://meskisf.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-                    meskisf.com
+                  <a href="tel:+14705453118" className="hover:text-primary transition-colors">
+                    (470) 545-3118
                   </a>
                 </div>
               </div>
