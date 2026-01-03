@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 font-sans",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 font-sans relative overflow-hidden",
   {
     variants: {
       variant: {
@@ -15,15 +15,15 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        gold: "bg-primary text-primary-foreground hover:shadow-glow hover:scale-105 uppercase tracking-widest",
-        elegant: "border border-primary/30 bg-transparent text-foreground hover:bg-primary/10 hover:border-primary uppercase tracking-widest",
-        hero: "bg-primary text-primary-foreground hover:shadow-glow hover:scale-105 uppercase tracking-[0.2em] font-medium rounded-none",
+        gold: "bg-primary text-primary-foreground hover:shadow-glow hover:scale-[1.02] uppercase tracking-[0.15em] font-light before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700",
+        elegant: "border border-primary/40 bg-transparent text-foreground hover:bg-primary/5 hover:border-primary uppercase tracking-[0.2em] font-light",
+        hero: "bg-primary text-primary-foreground shadow-glow hover:shadow-[0_0_100px_hsla(38,85%,52%,0.4)] hover:scale-[1.02] uppercase tracking-[0.25em] font-light before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/25 before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-1000",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
-        xl: "h-14 px-10 text-base",
+        lg: "h-12 rounded-md px-8",
+        xl: "h-16 px-12 text-base",
         icon: "h-10 w-10",
       },
     },
