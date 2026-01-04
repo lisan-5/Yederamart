@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { MapPin, Clock, Star, Coffee } from "lucide-react";
+import { MapPin, Clock, Star, Coffee, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import EthiopianPattern from "@/components/EthiopianPattern";
 import heroBg from "@/assets/hero-bg.jpg";
@@ -35,20 +35,65 @@ const Hero = () => {
       {/* Ethiopian Cultural Pattern Background */}
       <EthiopianPattern variant="mixed" />
       
-      {/* Ethiopian tricolor top bar */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-ethiopian-green via-primary to-ethiopian-red z-20" />
+      {/* Ethiopian tricolor top bar with shimmer */}
+      <motion.div 
+        className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-ethiopian-green via-primary to-ethiopian-red z-20"
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+      />
       
-      {/* Coffee steam effect - hidden on mobile */}
-      <div className="hidden md:flex absolute bottom-40 right-[20%] flex-col items-center gap-2 opacity-30">
+      {/* Floating sparkles */}
+      <motion.div 
+        className="absolute top-20 left-[10%] text-primary/30"
+        animate={{ 
+          y: [0, -20, 0],
+          opacity: [0.3, 0.7, 0.3],
+          rotate: [0, 180, 360]
+        }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <Sparkles className="w-6 h-6" />
+      </motion.div>
+      <motion.div 
+        className="absolute top-40 right-[15%] text-ethiopian-green/30"
+        animate={{ 
+          y: [0, -15, 0],
+          opacity: [0.2, 0.5, 0.2],
+          rotate: [0, -180, -360]
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+      >
+        <Sparkles className="w-4 h-4" />
+      </motion.div>
+      <motion.div 
+        className="absolute bottom-60 left-[20%] text-ethiopian-red/30"
+        animate={{ 
+          y: [0, -25, 0],
+          opacity: [0.3, 0.6, 0.3],
+          scale: [1, 1.2, 1]
+        }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+      >
+        <Sparkles className="w-5 h-5" />
+      </motion.div>
+      
+      {/* Coffee steam effect - enhanced */}
+      <div className="hidden md:flex absolute bottom-40 right-[20%] flex-col items-center gap-2 opacity-40">
         <motion.div 
-          className="w-1 h-8 bg-gradient-to-t from-transparent to-cream/50 rounded-full"
-          animate={{ y: [0, -20], opacity: [0, 0.6, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
+          className="w-1.5 h-12 bg-gradient-to-t from-transparent via-cream/30 to-cream/60 rounded-full blur-[1px]"
+          animate={{ y: [0, -30], opacity: [0, 0.8, 0], scaleY: [1, 1.5] }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut" }}
         />
         <motion.div 
-          className="w-1 h-6 bg-gradient-to-t from-transparent to-cream/40 rounded-full"
-          animate={{ y: [0, -15], opacity: [0, 0.5, 0] }}
-          transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut", delay: 0.5 }}
+          className="w-1 h-8 bg-gradient-to-t from-transparent via-cream/20 to-cream/50 rounded-full blur-[1px]"
+          animate={{ y: [0, -25], opacity: [0, 0.6, 0], scaleY: [1, 1.3] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeOut", delay: 0.5 }}
+        />
+        <motion.div 
+          className="w-0.5 h-6 bg-gradient-to-t from-transparent to-cream/40 rounded-full"
+          animate={{ y: [0, -20], opacity: [0, 0.4, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeOut", delay: 1 }}
         />
       </div>
 
@@ -59,32 +104,67 @@ const Hero = () => {
       >
         <div className="container mx-auto text-center">
           <div className="max-w-5xl mx-auto">
-            {/* Ethiopian decorative element */}
+            {/* Ethiopian decorative element with animation */}
             <motion.div 
               className="flex items-center justify-center gap-2 md:gap-4 mb-6 md:mb-8"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
             >
-              <div className="h-px w-8 md:w-12 bg-ethiopian-green/50" />
-              <div className="h-px w-4 md:w-8 bg-primary/70" />
-              <Coffee className="w-4 h-4 md:w-5 md:h-5 text-primary" />
-              <div className="h-px w-4 md:w-8 bg-primary/70" />
-              <div className="h-px w-8 md:w-12 bg-ethiopian-red/50" />
+              <motion.div 
+                className="h-px w-8 md:w-12 bg-ethiopian-green/50"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              />
+              <motion.div 
+                className="h-px w-4 md:w-8 bg-primary/70"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+              />
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              >
+                <Coffee className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+              </motion.div>
+              <motion.div 
+                className="h-px w-4 md:w-8 bg-primary/70"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+              />
+              <motion.div 
+                className="h-px w-8 md:w-12 bg-ethiopian-red/50"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              />
             </motion.div>
 
-            {/* Tagline - responsive layout */}
+            {/* Tagline - responsive layout with stagger */}
             <motion.div 
               className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mb-6 md:mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <span className="uppercase tracking-[0.3em] md:tracking-[0.5em] text-[10px] md:text-sm font-light text-ethiopian-green">Ethiopian Grocery</span>
-              <span className="hidden sm:block text-primary">•</span>
-              <span className="uppercase tracking-[0.3em] md:tracking-[0.5em] text-[10px] md:text-sm font-light text-primary">Coffee & Tea</span>
-              <span className="hidden sm:block text-primary">•</span>
-              <span className="uppercase tracking-[0.3em] md:tracking-[0.5em] text-[10px] md:text-sm font-light text-ethiopian-red">Cultural Goods</span>
+              {["Ethiopian Grocery", "Coffee & Tea", "Cultural Goods"].map((text, i) => (
+                <motion.span 
+                  key={text}
+                  className={`uppercase tracking-[0.3em] md:tracking-[0.5em] text-[10px] md:text-sm font-light ${
+                    i === 0 ? 'text-ethiopian-green' : i === 1 ? 'text-primary' : 'text-ethiopian-red'
+                  }`}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  {text}
+                  {i < 2 && <span className="hidden sm:inline text-primary ml-4">•</span>}
+                </motion.span>
+              ))}
             </motion.div>
 
             {/* Logo/Name with letter animation */}
@@ -107,7 +187,8 @@ const Hero = () => {
                   }}
                   whileHover={{ 
                     color: "hsl(42, 85%, 55%)",
-                    scale: 1.05,
+                    scale: 1.1,
+                    textShadow: "0 0 30px hsla(42, 85%, 55%, 0.5)",
                     transition: { duration: 0.2 }
                   }}
                 >
@@ -116,17 +197,18 @@ const Hero = () => {
               ))}
             </motion.h1>
 
-            {/* Mart subtitle with gradient */}
+            {/* Mart subtitle with gradient and glow */}
             <motion.p 
               className="font-serif text-2xl sm:text-4xl md:text-6xl mb-4 md:mb-6 font-light bg-gradient-to-r from-ethiopian-green via-primary to-ethiopian-red bg-clip-text text-transparent"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 1.1 }}
+              style={{ textShadow: "0 0 40px hsla(38, 85%, 52%, 0.3)" }}
             >
               Mart
             </motion.p>
 
-            {/* Subtitle */}
+            {/* Subtitle with typing effect feel */}
             <motion.p 
               className="font-serif text-base sm:text-lg md:text-2xl text-cream/60 italic mb-8 md:mb-10 font-light px-4"
               initial={{ opacity: 0 }}
@@ -136,78 +218,91 @@ const Hero = () => {
               Your Destination for Authentic Ethiopian Flavors
             </motion.p>
 
-            {/* Rating with cultural flair */}
+            {/* Rating with cultural flair and pulse */}
             <motion.div 
               className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mb-8 md:mb-12"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 1.5 }}
             >
-              <div className="flex items-center gap-1">
+              <motion.div 
+                className="flex items-center gap-1"
+                whileHover={{ scale: 1.1 }}
+              >
                 {[...Array(5)].map((_, i) => (
-                  <Star 
-                    key={i} 
-                    className={`w-3 h-3 md:w-4 md:h-4 ${i < 3 ? 'fill-primary text-primary' : 'fill-muted text-muted'}`} 
-                  />
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: 1.6 + i * 0.1 }}
+                  >
+                    <Star 
+                      className={`w-3 h-3 md:w-4 md:h-4 ${i < 3 ? 'fill-primary text-primary' : 'fill-muted text-muted'}`} 
+                    />
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
               <div className="hidden sm:block w-px h-4 bg-border" />
-              <span className="text-muted-foreground text-xs md:text-sm tracking-wide">Family Owned Since 2020</span>
+              <motion.span 
+                className="text-muted-foreground text-xs md:text-sm tracking-wide"
+                whileHover={{ color: "hsl(42, 85%, 55%)" }}
+              >
+                Family Owned Since 2020
+              </motion.span>
             </motion.div>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons with enhanced hover */}
             <motion.div 
               className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.7 }}
             >
-              <Button variant="hero" size="lg" className="w-full sm:w-auto" asChild>
-                <a href="#products">
-                  <span>Explore Products</span>
-                </a>
-              </Button>
-              <Button variant="elegant" size="lg" className="w-full sm:w-auto" asChild>
-                <a href="#location">Visit Our Store</a>
-              </Button>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+                <Button variant="hero" size="lg" className="w-full sm:w-auto group" asChild>
+                  <a href="#products">
+                    <span className="relative z-10">Explore Products</span>
+                  </a>
+                </Button>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+                <Button variant="elegant" size="lg" className="w-full sm:w-auto" asChild>
+                  <a href="#location">Visit Our Store</a>
+                </Button>
+              </motion.div>
             </motion.div>
 
-            {/* Quick Info with icons - responsive */}
+            {/* Quick Info with icons - responsive with hover effects */}
             <motion.div 
               className="mt-12 md:mt-20 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 sm:gap-8 text-[10px] md:text-xs text-muted-foreground uppercase tracking-widest"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 2 }}
             >
-              <motion.div 
-                className="flex items-center gap-2 hover:text-ethiopian-green transition-colors cursor-default"
-                whileHover={{ scale: 1.05 }}
-              >
-                <MapPin className="w-3 h-3 text-ethiopian-green" />
-                <span>Stone Mountain, GA</span>
-              </motion.div>
-              <div className="hidden sm:block w-1.5 h-1.5 bg-primary/50 rounded-full" />
-              <motion.div 
-                className="flex items-center gap-2 hover:text-primary transition-colors cursor-default"
-                whileHover={{ scale: 1.05 }}
-              >
-                <Clock className="w-3 h-3 text-primary" />
-                <span>Open Daily 10:30AM</span>
-              </motion.div>
-              <div className="hidden sm:block w-1.5 h-1.5 bg-ethiopian-red/50 rounded-full" />
-              <motion.div 
-                className="flex items-center gap-2 hover:text-ethiopian-red transition-colors cursor-default"
-                whileHover={{ scale: 1.05 }}
-              >
-                <Coffee className="w-3 h-3 text-ethiopian-red" />
-                <span>Fresh Coffee Daily</span>
-              </motion.div>
+              {[
+                { icon: MapPin, text: "Stone Mountain, GA", color: "ethiopian-green" },
+                { icon: Clock, text: "Open Daily 10:30AM", color: "primary" },
+                { icon: Coffee, text: "Fresh Coffee Daily", color: "ethiopian-red" }
+              ].map((item, i) => (
+                <motion.div 
+                  key={item.text}
+                  className={`flex items-center gap-2 hover:text-${item.color} transition-colors cursor-default`}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 2.1 + i * 0.15 }}
+                >
+                  <item.icon className={`w-3 h-3 text-${item.color}`} />
+                  <span>{item.text}</span>
+                  {i < 2 && <div className="hidden sm:block w-1.5 h-1.5 bg-primary/50 rounded-full ml-6" />}
+                </motion.div>
+              ))}
             </motion.div>
           </div>
         </div>
       </motion.div>
 
-      {/* Scroll indicator with tricolor */}
+      {/* Scroll indicator with tricolor and bounce */}
       <motion.div 
         className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-20"
         initial={{ opacity: 0 }}
@@ -219,7 +314,13 @@ const Hero = () => {
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
-          <span className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Discover</span>
+          <motion.span 
+            className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground"
+            animate={{ opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            Discover
+          </motion.span>
           <div className="w-px h-8 md:h-12 bg-gradient-to-b from-ethiopian-green via-primary to-ethiopian-red opacity-60" />
         </motion.div>
       </motion.div>
