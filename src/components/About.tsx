@@ -21,8 +21,118 @@ const About = () => {
 
   return (
     <section id="about" className="relative py-16 md:py-32 bg-card overflow-hidden">
-      {/* Ethiopian Cultural Pattern Background */}
+      {/* Ethiopian Cultural Pattern Background with enhanced animation */}
       <EthiopianPattern variant="mixed" />
+      
+      {/* Animated cultural elements overlay */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Floating Meskel crosses */}
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={`cross-${i}`}
+            className="absolute"
+            style={{
+              left: `${10 + i * 15}%`,
+              top: `${20 + (i % 3) * 25}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              rotate: [0, 180, 360],
+              opacity: [0.1, 0.2, 0.1],
+            }}
+            transition={{
+              duration: 8 + i * 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.8,
+            }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" className="text-primary/20">
+              <path
+                d="M12 2v20M2 12h20M6 6l12 12M18 6L6 18"
+                stroke="currentColor"
+                strokeWidth="1"
+                strokeLinecap="round"
+              />
+            </svg>
+          </motion.div>
+        ))}
+        
+        {/* Floating coffee beans */}
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={`bean-${i}`}
+            className="absolute text-coffee-medium/15"
+            style={{
+              left: `${5 + i * 12}%`,
+              top: `${30 + (i % 4) * 18}%`,
+            }}
+            animate={{
+              y: [0, -20, 0],
+              x: [0, 10, 0],
+              rotate: [0, 45, 0],
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 6 + i,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.5,
+            }}
+          >
+            <Coffee className="w-4 h-4" />
+          </motion.div>
+        ))}
+        
+        {/* Geometric diamond patterns */}
+        {[...Array(5)].map((_, i) => (
+          <motion.div
+            key={`diamond-${i}`}
+            className="absolute"
+            style={{
+              right: `${8 + i * 18}%`,
+              bottom: `${15 + (i % 2) * 30}%`,
+            }}
+            animate={{
+              rotate: [45, 225, 45],
+              scale: [1, 1.2, 1],
+              opacity: [0.08, 0.15, 0.08],
+            }}
+            transition={{
+              duration: 10 + i * 2,
+              repeat: Infinity,
+              ease: "linear",
+              delay: i * 1.2,
+            }}
+          >
+            <div className="w-6 h-6 border border-ethiopian-green/30" />
+          </motion.div>
+        ))}
+        
+        {/* Animated woven pattern lines */}
+        {[...Array(4)].map((_, i) => (
+          <motion.div
+            key={`weave-${i}`}
+            className="absolute h-px"
+            style={{
+              left: 0,
+              right: 0,
+              top: `${25 + i * 20}%`,
+              background: `linear-gradient(90deg, transparent, hsl(var(--primary) / 0.1), transparent)`,
+            }}
+            animate={{
+              opacity: [0, 0.3, 0],
+              scaleX: [0.5, 1, 0.5],
+            }}
+            transition={{
+              duration: 4 + i,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.7,
+            }}
+          />
+        ))}
+      </div>
       
       {/* Decorative corner elements with tricolor animation */}
       <motion.div 
