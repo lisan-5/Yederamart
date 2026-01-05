@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Coffee } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
@@ -45,55 +45,69 @@ const Navbar = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.8, delay: 0.5 }}
       >
-        {/* Tricolor bar at top when scrolled */}
-        <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-ethiopian-green via-primary to-ethiopian-red transition-opacity duration-500 ${isScrolled ? 'opacity-100' : 'opacity-0'}`} />
         
         <div className="container mx-auto px-4 md:px-6">
           <div className={`flex items-center justify-between transition-all duration-500 ${isScrolled ? 'py-3 md:py-4' : 'py-4 md:py-6'}`}>
-            {/* Logo with Ethiopian styling */}
+            {/* Text Logo - Elegant and Readable */}
             <motion.a 
               href="#" 
-              className="relative group flex items-center gap-2"
+              className="relative group"
               whileHover={{ scale: 1.02 }}
             >
-              <motion.div 
-                className="w-8 h-8 bg-gradient-to-br from-ethiopian-green via-primary to-ethiopian-red rounded-full flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity"
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.6 }}
-              >
-                <Coffee className="w-4 h-4 text-primary-foreground" />
-              </motion.div>
-              <div>
-                <span className="font-serif text-lg md:text-xl text-foreground group-hover:text-primary transition-colors duration-300 block leading-none">
+              <div className="flex items-baseline gap-1">
+                <motion.span 
+                  className="font-serif text-2xl md:text-3xl font-medium tracking-wide"
+                  style={{
+                    background: "linear-gradient(135deg, hsl(var(--ethiopian-green)), hsl(var(--primary)), hsl(var(--ethiopian-red)))",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
                   Yedera
-                </span>
-                <span className="text-[8px] md:text-[10px] uppercase tracking-[0.2em] text-primary leading-none">
+                </motion.span>
+                <span className="font-serif text-lg md:text-xl text-foreground/80 font-light">
                   Mart
                 </span>
               </div>
+              <motion.div 
+                className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-ethiopian-green via-primary to-ethiopian-red origin-left"
+                initial={{ scaleX: 0 }}
+                whileHover={{ scaleX: 1 }}
+                transition={{ duration: 0.3 }}
+              />
             </motion.a>
 
-            {/* Desktop Nav */}
-            <div className="hidden md:flex items-center gap-10">
+            {/* Desktop Nav - Enhanced */}
+            <div className="hidden md:flex items-center gap-2">
               {navLinks.map((link, index) => (
                 <motion.a
                   key={link.label}
                   href={link.href}
-                  className="relative text-xs uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors duration-300 hover-underline"
+                  className="relative px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-all duration-300 group"
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
+                  whileHover={{ y: -2 }}
                 >
-                  {link.label}
+                  <span className="relative z-10">{link.label}</span>
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-to-r from-ethiopian-green/10 via-primary/10 to-ethiopian-red/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  />
+                  <motion.div 
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  />
                 </motion.a>
               ))}
               <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 1 }}
+                className="ml-4"
               >
-                <Button variant="hero" size="sm" asChild>
+                <Button variant="hero" size="sm" asChild className="shadow-lg shadow-primary/20">
                   <a href="tel:+14705453118">
+                    <Phone className="w-4 h-4 mr-2" />
                     <span>Call Us</span>
                   </a>
                 </Button>
@@ -153,9 +167,6 @@ const Navbar = () => {
               onClick={() => setIsMobileMenuOpen(false)}
             />
             
-            {/* Tricolor accents */}
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-ethiopian-green via-primary to-ethiopian-red" />
-            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-ethiopian-green via-primary to-ethiopian-red" />
             
             {/* Menu Content */}
             <motion.div 
@@ -164,16 +175,24 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              {/* Decorative coffee icon */}
+              {/* Decorative text logo */}
               <motion.div 
                 className="mb-10"
-                initial={{ scale: 0, rotate: -180 }}
-                animate={{ scale: 1, rotate: 0 }}
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.5 }}
               >
-                <div className="w-14 h-14 bg-gradient-to-br from-ethiopian-green via-primary to-ethiopian-red rounded-full flex items-center justify-center">
-                  <Coffee className="w-7 h-7 text-primary-foreground" />
-                </div>
+                <span 
+                  className="font-serif text-3xl font-medium"
+                  style={{
+                    background: "linear-gradient(135deg, hsl(var(--ethiopian-green)), hsl(var(--primary)), hsl(var(--ethiopian-red)))",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  Yedera Mart
+                </span>
               </motion.div>
               
               <div className="flex flex-col items-center gap-6">

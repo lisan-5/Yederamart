@@ -146,18 +146,71 @@ const Location = () => {
                 />
               </div>
               
-              {/* Location pin overlay with pulse */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-                <div className="relative">
+              {/* Location pin overlay - Ethiopian Coffee Pot (Jebena) inspired marker */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-full pointer-events-none">
+                <div className="relative flex flex-col items-center">
+                  {/* Pulse rings */}
                   <motion.div 
-                    className="w-8 h-8 bg-ethiopian-green/30 rounded-full absolute -translate-x-1/2 -translate-y-1/2"
-                    animate={{ scale: [1, 2.5, 1], opacity: [0.5, 0, 0.5] }}
+                    className="absolute bottom-0 w-12 h-12 rounded-full border-2 border-primary/40"
+                    animate={{ scale: [1, 2, 1], opacity: [0.6, 0, 0.6] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   />
                   <motion.div 
-                    className="w-4 h-4 bg-ethiopian-green rounded-full relative z-10 shadow-lg shadow-ethiopian-green/50"
-                    animate={{ y: [0, -5, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
+                    className="absolute bottom-0 w-8 h-8 rounded-full border-2 border-ethiopian-green/50"
+                    animate={{ scale: [1, 1.8, 1], opacity: [0.7, 0, 0.7] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}
+                  />
+                  
+                  {/* Cultural marker - Ethiopian cross inspired pin */}
+                  <motion.div 
+                    className="relative z-10"
+                    animate={{ y: [0, -4, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    {/* Pin body with tricolor gradient */}
+                    <div className="relative">
+                      <svg width="40" height="52" viewBox="0 0 40 52" fill="none" className="drop-shadow-lg">
+                        {/* Main pin shape */}
+                        <path 
+                          d="M20 0C8.954 0 0 8.954 0 20c0 14 20 32 20 32s20-18 20-32C40 8.954 31.046 0 20 0z" 
+                          fill="url(#pinGradient)"
+                        />
+                        {/* Inner circle */}
+                        <circle cx="20" cy="18" r="10" fill="hsl(var(--background))" />
+                        {/* Ethiopian cross pattern in center */}
+                        <path 
+                          d="M20 11v14M13 18h14M16 14l8 8M24 14l-8 8" 
+                          stroke="url(#crossGradient)" 
+                          strokeWidth="1.5" 
+                          strokeLinecap="round"
+                        />
+                        {/* Decorative dots */}
+                        <circle cx="20" cy="12" r="1.5" fill="hsl(var(--ethiopian-green))" />
+                        <circle cx="20" cy="24" r="1.5" fill="hsl(var(--ethiopian-red))" />
+                        <circle cx="14" cy="18" r="1.5" fill="hsl(var(--primary))" />
+                        <circle cx="26" cy="18" r="1.5" fill="hsl(var(--primary))" />
+                        
+                        <defs>
+                          <linearGradient id="pinGradient" x1="0" y1="0" x2="40" y2="52">
+                            <stop offset="0%" stopColor="hsl(var(--ethiopian-green))" />
+                            <stop offset="50%" stopColor="hsl(var(--primary))" />
+                            <stop offset="100%" stopColor="hsl(var(--ethiopian-red))" />
+                          </linearGradient>
+                          <linearGradient id="crossGradient" x1="13" y1="11" x2="27" y2="25">
+                            <stop offset="0%" stopColor="hsl(var(--ethiopian-green))" />
+                            <stop offset="50%" stopColor="hsl(var(--primary))" />
+                            <stop offset="100%" stopColor="hsl(var(--ethiopian-red))" />
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                    </div>
+                  </motion.div>
+                  
+                  {/* Ground shadow */}
+                  <motion.div 
+                    className="w-6 h-2 bg-foreground/20 rounded-full blur-sm mt-1"
+                    animate={{ scale: [1, 0.8, 1], opacity: [0.3, 0.15, 0.3] }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                   />
                 </div>
               </div>
