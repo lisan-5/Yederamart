@@ -9,7 +9,6 @@ Local development and deployment instructions for this Vite + React project.
 ```sh
 npm install
 ```
-
 2. Start development server:
 
 ```sh
